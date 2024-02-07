@@ -6,6 +6,7 @@
  * A simple illustration of CRUD operation using the PreparedStatement with named bindings.
  */
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -246,7 +247,7 @@ public class PreparedStatementBindingsSample {
     if (System.console() == null) {
       BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
       System.out.print(prompt);
-      return r.readLine();
+      return BoundedLineReader.readLine(r, 5_000_000);
     }
     else {
       return new String(System.console().readPassword(prompt));

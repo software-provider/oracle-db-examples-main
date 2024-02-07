@@ -1,27 +1,6 @@
 /* Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.*/
-/**
- * DESCRIPTION
- *
- * This code sample illustrates the usage of below Oracle column data types -
- * <p>
- * DATE, TIMESTAMP, TIMESTAMP WITH TIME ZONE and TIMESTAMP WITH LOCAL TIME ZONE
- * </p>
- * The code sample creates a simple table with these data types and performs
- * insert, update, and retrieval operation on the table.
- * <p>
- * It is required that applications have Oracle JDBC driver jar (ojdbc8.jar) in
- * the class-path, and that the database backend supports SQL (this sample uses
- * an Oracle Database).
- * </p>
- * <p>
- * To run the sample, you must enter the DB user's password from the console,
- * and optionally specify the DB user and/or connect URL on the command-line.
- * You can also modify these values in this file and recompile the code.
- * </p>
- *
- * java DateTimeStampSample -l <url> -u <user>
- *
- */
+
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.sql.Connection;
@@ -250,7 +229,7 @@ public class DateTimeStampSample {
     } else {
       BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
       show(prompt);
-      password = r.readLine();
+      password = BoundedLineReader.readLine(r, 5_000_000);
     }
   }
 

@@ -12,9 +12,8 @@
       java VARRAYSample -l <url> -u <user> 
  */
 
-/*import java.sql.*;
-import oracle.sql.*;
-import oracle.jdbc.*; */
+
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
@@ -243,7 +242,7 @@ public class VARRAYSample {
     if (System.console() == null) {
       BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
       showln(prompt);
-      password = r.readLine();
+      password = BoundedLineReader.readLine(r, 5_000_000);
     } else {
       char[] pchars = System.console().readPassword("\n[%s]", prompt);
       if (pchars != null) {

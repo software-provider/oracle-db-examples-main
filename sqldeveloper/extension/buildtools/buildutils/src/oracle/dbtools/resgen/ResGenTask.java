@@ -16,6 +16,7 @@ limitations under the License.
 
 package oracle.dbtools.resgen;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -215,7 +216,7 @@ public class ResGenTask extends Task {
             try {
                 r = new BufferedReader(new FileReader(m_inputList));
                 String line;
-                while ((line = r.readLine()) != null) {
+                while ((line = BoundedLineReader.readLine(r, 5_000_000)) != null) {
                     line = line.trim();
                     if (line.length() > 0) {
                         String path = line.replace('.', File.separatorChar);
@@ -251,7 +252,7 @@ public class ResGenTask extends Task {
             try {
                 rdr = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("Resources.template")));
                 String s;
-                while ((s = rdr.readLine()) != null) {
+                while ((s = BoundedLineReader.readLine(rdr, 5_000_000)) != null) {
                     bldr.append(s).append('\n');
                 }
             } catch (Exception ex) {

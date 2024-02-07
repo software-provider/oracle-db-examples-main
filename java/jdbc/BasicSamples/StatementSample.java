@@ -1,10 +1,7 @@
 /* Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.*/
 
-/**
- * DESCRIPTION
- *
- * A simple illustration of CRUD operation using the Statement object.
- */
+
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -237,7 +234,7 @@ public class StatementSample {
     if (System.console() == null) {
       BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
       System.out.print(prompt);
-      return r.readLine();
+      return BoundedLineReader.readLine(r, 5_000_000);
     }
     else {
       return new String(System.console().readPassword(prompt));

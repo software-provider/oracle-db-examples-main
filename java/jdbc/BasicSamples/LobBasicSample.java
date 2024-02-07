@@ -15,6 +15,7 @@
 
  */
 
+import io.github.pixee.security.BoundedLineReader;
 import java.sql.Connection;
 import java.sql.NClob;
 import java.sql.Statement;
@@ -634,7 +635,7 @@ public class LobBasicSample {
     if (System.console() == null) {
       BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
       showln(prompt);
-      password = r.readLine();
+      password = BoundedLineReader.readLine(r, 5_000_000);
     } else {
       char[] pchars = System.console().readPassword("\n[%s]", prompt);
       if (pchars != null) {

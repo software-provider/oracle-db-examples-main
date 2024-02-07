@@ -16,8 +16,9 @@
  * will hit error when connecting.
  */
  
-import java.io.BufferedReader;
-import java.io.IOException;
+ import io.github.pixee.security.BoundedLineReader;
+ import java.io.BufferedReader;
+ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -274,7 +275,7 @@ public class SQLXMLSample {
     } else {
       BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
       show(prompt);
-      password = r.readLine();
+      password = BoundedLineReader.readLine(r, 5_000_000);
     }
   }
 }

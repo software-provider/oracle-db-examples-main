@@ -1,3 +1,4 @@
+import io.github.pixee.security.BoundedLineReader;
 import java.sql.DriverManager;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -194,7 +195,7 @@ public class JavaStoredProcSample {
     if (System.console() == null) {
       BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
       showln(prompt);
-      password = r.readLine();
+      password = BoundedLineReader.readLine(r, 5_000_000);
     } else {
       char[] pchars = System.console().readPassword("\n[%s]", prompt);
       if (pchars != null) {

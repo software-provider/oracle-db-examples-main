@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License. 
 */
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -54,7 +55,7 @@ public class ConnectionHelperClient {
 	            ) {
                     out.println(connectionInfo);
 					for (;;) {
-						String line = in.readLine();
+						String line = BoundedLineReader.readLine(in, 5_000_000);
 						if (line == null) {
 							break;
 						}

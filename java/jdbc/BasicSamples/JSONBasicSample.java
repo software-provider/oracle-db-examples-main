@@ -33,6 +33,7 @@
  *   java JSONBasicSample -l <url> -u <user>
  */
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.sql.Connection;
@@ -255,7 +256,7 @@ public class JSONBasicSample {
     } else {
       BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
       show(prompt);
-      password = r.readLine();
+      password = BoundedLineReader.readLine(r, 5_000_000);
     }
   }
 }

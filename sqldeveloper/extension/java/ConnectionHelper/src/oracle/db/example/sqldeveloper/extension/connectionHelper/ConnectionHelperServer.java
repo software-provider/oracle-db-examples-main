@@ -16,6 +16,7 @@ limitations under the License.
 
 package oracle.db.example.sqldeveloper.extension.connectionHelper;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -136,7 +137,7 @@ public class ConnectionHelperServer {
 		protected Void doWork() throws TaskException {
 			try (BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 				 PrintWriter out =	new PrintWriter(socket.getOutputStream(), true);) {
-				String inputLine= in.readLine();
+				String inputLine= BoundedLineReader.readLine(in, 5_000_000);
 				try {
 					ConnectionHelper.processPotentialConnectionRequest(inputLine);
 					out.println("Request Submitted");

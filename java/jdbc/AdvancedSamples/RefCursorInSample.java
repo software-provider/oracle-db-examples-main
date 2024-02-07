@@ -12,6 +12,7 @@
       java RefCursorInSample -l <url> -u <user> 
  */
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.sql.CallableStatement;
@@ -224,7 +225,7 @@ public class RefCursorInSample {
     if (System.console() == null) {
       BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
       shownln(prompt);
-      password = r.readLine();
+      password = BoundedLineReader.readLine(r, 5_000_000);
     } else {
       char[] pchars = System.console().readPassword("\n[%s]", prompt);
       if (pchars != null) {
