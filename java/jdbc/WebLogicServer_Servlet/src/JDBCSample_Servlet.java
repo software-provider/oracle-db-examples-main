@@ -1,3 +1,4 @@
+import io.github.pixee.security.Newlines;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -51,7 +52,7 @@ public class JDBCSample_Servlet extends HttpServlet {
       }       
     } catch (Exception e) {
         response.setStatus(500);
-        response.setHeader("Exception", e.toString());
+        response.setHeader("Exception", Newlines.stripAll(e.toString()));
         out.print("\n Web Request failed");
         out.print("\n "+e.toString());
         e.printStackTrace();
