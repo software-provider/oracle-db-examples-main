@@ -99,25 +99,25 @@ public static void main(String[] args) throws Exception
     //get input parameters
       for(int i=0; i<args.length; i++)
       {
-        if(args[i].equalsIgnoreCase("-dbUrl"))
+        if("-dbUrl".equalsIgnoreCase(args[i]))
           dbUrl = args[i+1];
-        else if(args[i].equalsIgnoreCase("-dbUser"))
+        else if("-dbUser".equalsIgnoreCase(args[i]))
           dbUser = args[i+1];
-        else if(args[i].equalsIgnoreCase("-dbPassword"))
+        else if("-dbPassword".equalsIgnoreCase(args[i]))
           dbPassword = args[i+1];
-        else if(args[i].equalsIgnoreCase("-networkName") && args[i+1]!=null)
+        else if("-networkName".equalsIgnoreCase(args[i]) && args[i+1]!=null)
           networkName = args[i+1].toUpperCase();
-        else if(args[i].equalsIgnoreCase("-linkLevel"))
+        else if("-linkLevel".equalsIgnoreCase(args[i]))
           linkLevel = Integer.parseInt(args[i+1]);
-        else if(args[i].equalsIgnoreCase("-startNodeId"))
+        else if("-startNodeId".equalsIgnoreCase(args[i]))
           startNodeId = Long.parseLong(args[i+1]);
-        else if(args[i].equalsIgnoreCase("-cost:"))
+        else if("-cost:".equalsIgnoreCase(args[i]))
           cost = Double.parseDouble(args[i]);
-        else if(args[i].equalsIgnoreCase("-tableNamePrefix"))
+        else if("-tableNamePrefix".equalsIgnoreCase(args[i]))
           tableNamePrefix = args[i+1];
-        else if(args[i].equalsIgnoreCase("-configXmlFile"))
+        else if("-configXmlFile".equalsIgnoreCase(args[i]))
           configXmlFile = args[i+1];
-        else if(args[i].equalsIgnoreCase("-logLevel"))
+        else if("-logLevel".equalsIgnoreCase(args[i]))
           logLevel = args[i+1];
       }
 

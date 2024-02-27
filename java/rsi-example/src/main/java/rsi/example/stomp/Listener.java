@@ -80,7 +80,7 @@ public class Listener {
 
       if (msg instanceof TextMessage || msg instanceof StompJmsBytesMessage) {
         String body = getBody(msg);
-        if (body.trim().equals("SHUTDOWN")) {
+        if ("SHUTDOWN".equals(body.trim())) {
           long diff = System.currentTimeMillis() - start;
           System.out.println(String.format("Received %d in %.2f seconds", count, (1.0 * diff / 1000.0)));
 

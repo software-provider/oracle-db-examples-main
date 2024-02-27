@@ -257,7 +257,7 @@ public class StatementSample {
         if (arg.equals(optionName)) {
           if (i < args.length)
             argValue = args[i++];
-          if (argValue.startsWith("-") || argValue.equals("")) {
+          if (argValue.startsWith("-") || "".equals(argValue)) {
             show("No value for Option " + optionName + ", use default.");
             argValue = defaultVal;
           }

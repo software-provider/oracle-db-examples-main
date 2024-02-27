@@ -343,7 +343,7 @@ public class UCPManagerMBean {
         if (arg.equals(optionName)) {
           if (i < args.length)
             argValue = args[i++];
-          if (argValue.startsWith("-") || argValue.equals("")) {
+          if (argValue.startsWith("-") || "".equals(argValue)) {
             argValue = defaultVal;
           }
           found = true;

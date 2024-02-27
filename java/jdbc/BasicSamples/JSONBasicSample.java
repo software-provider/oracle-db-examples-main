@@ -226,7 +226,7 @@ public class JSONBasicSample {
         if (arg.equals(optionName)) {
           if (i < args.length)
             argValue = args[i++];
-          if (argValue.startsWith("-") || argValue.equals("")) {
+          if (argValue.startsWith("-") || "".equals(argValue)) {
             show("No value specified for Option " + optionName);
             argValue = defaultVal;
           }

@@ -128,7 +128,7 @@ public class testSODA {
 
             // Drop the collection, deleting the table backing
             // it and collection metadata
-            if (args.length > 0 && args[0].equals("drop")) {
+            if (args.length > 0 && "drop".equals(args[0])) {
                 col.admin().drop();
                 System.out.println ("\n* Collection dropped *");
             }
